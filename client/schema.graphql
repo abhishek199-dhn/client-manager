@@ -1,0 +1,122 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Auth {
+    token: String!
+}
+
+type Client {
+    _id: ID!
+    address: String!
+    companyName: String!
+    createdAt(
+        "date format"
+        format: String = "MM-DD-YYYY"
+    ): String
+    industry: String
+    name: String!
+    title: String!
+    updatedAt(
+        "date format"
+        format: String = "MM-DD-YYYY"
+    ): String
+}
+
+type ClientTransaction {
+    _id: ID!
+    amount: Float!
+    clientId: ID!
+    createdAt(
+        "date format"
+        format: String = "MM-DD-YYYY"
+    ): String
+    itemsPurchased: String!
+    merchant: String!
+    updatedAt(
+        "date format"
+        format: String = "MM-DD-YYYY"
+    ): String
+}
+
+type Mutation {
+    _blank: String
+    addClient(client: AddClientInput!): Client
+    addClientTransaction(transaction: AddClientTransactionInput!): ClientTransaction
+    addUser(user: AddUserInput!): User
+    login(auth: AuthInput!): Auth
+    updateClientTransaction(transaction: UpadateClientTransactionInput!): ClientTransaction
+}
+
+type Query {
+    _blank: String
+    clientTransactions(clientId: ID, filters: QueryFilters): [ClientTransaction]
+    clients(filters: QueryFilters): [Client]
+    users(filters: QueryFilters): [User]
+}
+
+type User {
+    _id: ID!
+    createdAt(
+        "date format"
+        format: String = "MM-DD-YYYY"
+    ): String
+    name: String!
+    updatedAt(
+        "date format"
+        format: String = "MM-DD-YYYY"
+    ): String
+    username: String!
+}
+
+enum CacheControlScope {
+    PRIVATE
+    PUBLIC
+}
+
+input AddClientInput {
+    address: String!
+    companyName: String!
+    industry: String
+    name: String!
+    title: String!
+}
+
+input AddClientTransactionInput {
+    amount: Float!
+    clientId: ID!
+    itemsPurchased: String!
+    merchant: String!
+}
+
+input AddUserInput {
+    name: String!
+    password: String!
+    username: String!
+}
+
+input AuthInput {
+    password: String!
+    username: String!
+}
+
+input QueryFilters {
+    _id: ID
+    limit: Int
+    skip: Int
+}
+
+input UpadateClientTransactionInput {
+    _id: String!
+    amount: Float
+    clientId: ID
+    itemsPurchased: String
+    merchant: String
+}
+
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload
