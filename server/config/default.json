@@ -1,0 +1,17 @@
+{
+  "app": {
+    "port": 3005
+  },
+  "dbConnectors": {
+    "mongoDB": {
+      "connectionURL": "mongodb://localhost:27017"
+    }
+  },
+  "jwt": {
+    "issuer": "Abhishek",
+    "secret": "401800d44771c79aa6a69a102d417506",
+    "expiresIn": "1d",
+    "tokenCookieKey": "USER_TOKEN",
+    "tokenMaxAge": 2592000000
+  }
+}
